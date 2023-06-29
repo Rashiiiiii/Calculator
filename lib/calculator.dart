@@ -34,6 +34,7 @@ class _CalculatorState extends State<Calculator> {
         _output = _output + buttonText;
       }
     } else if (buttonText == "=") {
+      num2=double.parse(output);
       if (operand == "+") {
         _output = (num1 + num2).toString();
       }
@@ -76,7 +77,7 @@ class _CalculatorState extends State<Calculator> {
               alignment: Alignment.centerRight,
               padding: EdgeInsets.only(bottom: 400),
               child: Text(
-                "0",
+                output,
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 45,
@@ -94,7 +95,7 @@ class _CalculatorState extends State<Calculator> {
                                 Colors.white30),
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.amberAccent)),
-                        onPressed: () {},
+                        onPressed:() => buttonPressed("AC"),
                         child: const Text(
                           "AC",
                           style: TextStyle(
@@ -114,7 +115,7 @@ class _CalculatorState extends State<Calculator> {
                                 Colors.white30),
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.amberAccent)),
-                        onPressed: () {},
+                        onPressed: () => buttonPressed("AC"),
                         child: Icon(Icons.arrow_back),
                       ),
                     ),
@@ -128,7 +129,7 @@ class _CalculatorState extends State<Calculator> {
                                 Colors.white30),
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.amberAccent)),
-                        onPressed: () {},
+                        onPressed:() =>  buttonPressed("AC"),
                         child: const Text(
                           "%",
                           style: TextStyle(
@@ -148,7 +149,7 @@ class _CalculatorState extends State<Calculator> {
                                 Colors.white30),
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.amberAccent)),
-                        onPressed: () {},
+                        onPressed:() =>  buttonPressed("/"),
                         child: const Text(
                           "/",
                           style: TextStyle(
@@ -169,7 +170,7 @@ class _CalculatorState extends State<Calculator> {
                                 Colors.white30),
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.amberAccent)),
-                        onPressed: () {},
+                        onPressed: () => buttonPressed("7"),
                         child: const Text(
                           "7",
                           style: TextStyle(
@@ -189,7 +190,7 @@ class _CalculatorState extends State<Calculator> {
                                 Colors.white30),
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.amberAccent)),
-                        onPressed: () {},
+                        onPressed:() =>  buttonPressed("8"),
                         child: const Text(
                           "8",
                           style: TextStyle(
@@ -209,7 +210,7 @@ class _CalculatorState extends State<Calculator> {
                                 Colors.white30),
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.amberAccent)),
-                        onPressed: () {},
+                        onPressed: () =>  buttonPressed("9"),
                         child: const Text(
                           "9",
                           style: TextStyle(
@@ -229,7 +230,7 @@ class _CalculatorState extends State<Calculator> {
                                 Colors.white30),
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.amberAccent)),
-                        onPressed: () {},
+                        onPressed: () => buttonPressed("*"),
                         child: const Text(
                           "X",
                           style: TextStyle(
@@ -250,7 +251,7 @@ class _CalculatorState extends State<Calculator> {
                                 Colors.white30),
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.amberAccent)),
-                        onPressed: () {},
+                        onPressed:() =>  buttonPressed("4"),
                         child: const Text(
                           "4",
                           style: TextStyle(
@@ -270,7 +271,7 @@ class _CalculatorState extends State<Calculator> {
                                 Colors.white30),
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.amberAccent)),
-                        onPressed: () {},
+                        onPressed: () => buttonPressed("5"),
                         child: const Text(
                           "5",
                           style: TextStyle(
@@ -290,7 +291,7 @@ class _CalculatorState extends State<Calculator> {
                                 Colors.white30),
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.amberAccent)),
-                        onPressed: () {},
+                        onPressed: () => buttonPressed("6"),
                         child: const Text(
                           "6",
                           style: TextStyle(
@@ -310,7 +311,7 @@ class _CalculatorState extends State<Calculator> {
                                 Colors.white30),
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.amberAccent)),
-                        onPressed: () {},
+                        onPressed: () => buttonPressed("-"),
                         child: const Text(
                           "-",
                           style: TextStyle(
@@ -331,7 +332,7 @@ class _CalculatorState extends State<Calculator> {
                                 Colors.white30),
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.amberAccent)),
-                        onPressed: () {},
+                        onPressed: () => buttonPressed("1"),
                         child: const Text(
                           "1",
                           style: TextStyle(
@@ -351,7 +352,7 @@ class _CalculatorState extends State<Calculator> {
                                 Colors.white30),
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.amberAccent)),
-                        onPressed: () {},
+                        onPressed: () => buttonPressed("2"),
                         child: const Text(
                           "2",
                           style: TextStyle(
@@ -371,7 +372,7 @@ class _CalculatorState extends State<Calculator> {
                                 Colors.white30),
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.amberAccent)),
-                        onPressed: () {},
+                        onPressed: () => buttonPressed("3"),
                         child: const Text(
                           "3",
                           style: TextStyle(
@@ -391,7 +392,7 @@ class _CalculatorState extends State<Calculator> {
                                 Colors.white30),
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.amberAccent)),
-                        onPressed: () {},
+                        onPressed: () => buttonPressed("+"),
                         child: const Text(
                           "+",
                           style: TextStyle(
@@ -412,7 +413,7 @@ class _CalculatorState extends State<Calculator> {
                                 Colors.white30),
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.amberAccent)),
-                        onPressed: () {},
+                        onPressed: () =>  buttonPressed("+/-"),
                         child: const Text(
                           "+/-",
                           style: TextStyle(
@@ -432,7 +433,7 @@ class _CalculatorState extends State<Calculator> {
                                 Colors.white30),
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.amberAccent)),
-                        onPressed: () {},
+                        onPressed: () => buttonPressed("0"),
                         child: const Text(
                           "0",
                           style: TextStyle(
@@ -452,7 +453,7 @@ class _CalculatorState extends State<Calculator> {
                                 Colors.white30),
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.amberAccent)),
-                        onPressed: () {},
+                        onPressed: () =>  buttonPressed("."),
                         child: const Text(
                           ".",
                           style: TextStyle(
@@ -472,7 +473,7 @@ class _CalculatorState extends State<Calculator> {
                                 Colors.white30),
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.amberAccent)),
-                        onPressed: () {},
+                        onPressed: () => buttonPressed("="),
                         child: const Text(
                           "=",
                           style: TextStyle(
