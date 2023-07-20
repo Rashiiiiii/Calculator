@@ -23,7 +23,9 @@ class _CalculatorState extends State<Calculator> {
     } else if (buttonText == "+" ||
         buttonText == "-" ||
         buttonText == "*" ||
-        buttonText == "/") {
+        buttonText == "/" ||
+        buttonText == "%"
+    ) {
       num1 = double.parse(output);
       operand = buttonText;
       _output = "0";
@@ -47,6 +49,10 @@ class _CalculatorState extends State<Calculator> {
       if (operand == "/") {
         _output = (num1 / num2).toString();
       }
+      if (operand == "%") {
+        _output = (num1 / 100).toString();
+      }
+
       num1 = 0;
       num2 = 0;
       operand = " ";
@@ -108,7 +114,7 @@ class _CalculatorState extends State<Calculator> {
                     const SizedBox(
                       width: 10,
                     ),
-                    Expanded(
+                    /*Expanded(
                       child: ElevatedButton(
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(
@@ -119,6 +125,8 @@ class _CalculatorState extends State<Calculator> {
                         child: Icon(Icons.arrow_back),
                       ),
                     ),
+
+                     */
                     const SizedBox(
                       width: 10,
                     ),
@@ -129,7 +137,7 @@ class _CalculatorState extends State<Calculator> {
                                 Colors.white30),
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.amberAccent)),
-                        onPressed:() =>  buttonPressed("AC"),
+                        onPressed:() =>  buttonPressed("%"),
                         child: const Text(
                           "%",
                           style: TextStyle(
