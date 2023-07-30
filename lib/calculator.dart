@@ -81,7 +81,7 @@ class _CalculatorState extends State<Calculator> {
           children: [
             Container(
               alignment: Alignment.centerRight,
-              padding: EdgeInsets.only(bottom: 400),
+              padding: EdgeInsets.only(bottom: 450),
               child: Text(
                 output,
                 style: TextStyle(
