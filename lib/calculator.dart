@@ -30,10 +30,13 @@ class _CalculatorState extends State<Calculator> {
       operand = buttonText;
       _output = "0";
     } else if (buttonText == ".") {
-      if (_output.contains(".")) {
-        print("already contains a decimal");
-      } else {
-        _output = _output + buttonText;
+      if (!_output.contains(".")) {
+        // If output is empty or only contains a "-", add leading "0"
+        if (_output.isEmpty || _output == "-") {
+          _output += "0.";
+        } else {
+          _output += buttonText;
+        }
       }
     } else if (buttonText == "=") {
       num2=double.parse(output);
@@ -50,7 +53,7 @@ class _CalculatorState extends State<Calculator> {
         _output = (num1 / num2).toString();
       }
       if (operand == "%") {
-        _output = (num1 / 100).toString();
+        _output = (num1 % num2).toString();
       }
 
       num1 = 0;
@@ -61,8 +64,10 @@ class _CalculatorState extends State<Calculator> {
     }
     print(_output);
     setState(() {
-      output = double.parse(_output).toStringAsFixed(0);
+      double number = double.parse(_output);
+      output = number.toStringAsFixed(number.truncateToDouble() == number ? 0 : 2);
     });
+    // _output = "0";
   }
 
   /*Widget buildButton(String buttonText) {
@@ -81,10 +86,10 @@ class _CalculatorState extends State<Calculator> {
           children: [
             Container(
               alignment: Alignment.centerRight,
-              padding: EdgeInsets.only(bottom: 450),
+              padding: const EdgeInsets.only(bottom: 450),
               child: Text(
                 output,
-                style: TextStyle(
+                style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 45,
                     color: Colors.white),
@@ -92,6 +97,9 @@ class _CalculatorState extends State<Calculator> {
             ),
             Column(
               children: [
+
+                //ROW 1
+
                 Row(
                   children: [
                     Expanded(
@@ -114,22 +122,6 @@ class _CalculatorState extends State<Calculator> {
                     const SizedBox(
                       width: 10,
                     ),
-                    /*Expanded(
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                Colors.white30),
-                            foregroundColor: MaterialStateProperty.all<Color>(
-                                Colors.amberAccent)),
-                        onPressed: () => buttonPressed("AC"),
-                        child: Icon(Icons.arrow_back),
-                      ),
-                    ),
-
-                     */
-                    const SizedBox(
-                      width: 10,
-                    ),
                     Expanded(
                       child: ElevatedButton(
                         style: ButtonStyle(
@@ -137,9 +129,9 @@ class _CalculatorState extends State<Calculator> {
                                 Colors.white30),
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.amberAccent)),
-                        onPressed:() =>  buttonPressed("%"),
+                        onPressed: () =>  buttonPressed("."),
                         child: const Text(
-                          "%",
+                          ".",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
@@ -149,26 +141,12 @@ class _CalculatorState extends State<Calculator> {
                     ),
                     const SizedBox(
                       width: 10,
-                    ),
-                    Expanded(
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                Colors.white30),
-                            foregroundColor: MaterialStateProperty.all<Color>(
-                                Colors.amberAccent)),
-                        onPressed:() =>  buttonPressed("/"),
-                        child: const Text(
-                          "/",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
                     ),
                   ],
                 ),
+
+                //ROW 2
+
                 Row(
                   children: [
                     Expanded(
@@ -250,6 +228,9 @@ class _CalculatorState extends State<Calculator> {
                     ),
                   ],
                 ),
+
+                //ROW 3
+
                 Row(
                   children: [
                     Expanded(
@@ -331,6 +312,9 @@ class _CalculatorState extends State<Calculator> {
                     ),
                   ],
                 ),
+
+                //ROW 4
+
                 Row(
                   children: [
                     Expanded(
@@ -412,25 +396,11 @@ class _CalculatorState extends State<Calculator> {
                     ),
                   ],
                 ),
+
+                //ROW 5
+
                 Row(
                   children: [
-                    Expanded(
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                Colors.white30),
-                            foregroundColor: MaterialStateProperty.all<Color>(
-                                Colors.amberAccent)),
-                        onPressed: () =>  buttonPressed("+/-"),
-                        child: const Text(
-                          "+/-",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                    ),
                     const SizedBox(
                       width: 10,
                     ),
@@ -461,9 +431,29 @@ class _CalculatorState extends State<Calculator> {
                                 Colors.white30),
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.amberAccent)),
-                        onPressed: () =>  buttonPressed("."),
+                        onPressed:() =>  buttonPressed("%"),
                         child: const Text(
-                          ".",
+                          "%",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Colors.white30),
+                            foregroundColor: MaterialStateProperty.all<Color>(
+                                Colors.amberAccent)),
+                        onPressed:() =>  buttonPressed("/"),
+                        child: const Text(
+                          "/",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
